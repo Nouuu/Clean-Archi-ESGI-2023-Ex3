@@ -9,7 +9,7 @@ import org.esgi.al.ex3.infra.io.CliOutput;
 import org.esgi.al.ex3.infra.io.FileInputReader;
 import org.esgi.al.ex3.infra.logger.CliLogger;
 import org.esgi.al.ex3.infra.utils.IntegerParser;
-import org.esgi.al.ex3.infra.utils.MathOperator;
+import org.esgi.al.ex3.infra.utils.MathOperatorFactory;
 import org.esgi.al.ex3.kernel.Logger;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class CalculatorMain {
         Output output = new CliOutput();
         Logger logger = new CliLogger(output, log);
         Parser<Integer> parser = new IntegerParser(logger);
-        Operator<Integer> operator = new MathOperator(operation);
+        Operator<Integer> operator = MathOperatorFactory.fromSymbol(operation);
         Calculator calculator = new Calculator(output, logger, parser);
 
         // Run the program
